@@ -1,2 +1,2 @@
-# template-web-django
-DjangoによるWebプロダクト作成用のテンプレートレポジトリ
+# boxing-gym-exper-lesson-reserve-sys
+ボクシングジム体験レッスン予約システムレポジトリ
