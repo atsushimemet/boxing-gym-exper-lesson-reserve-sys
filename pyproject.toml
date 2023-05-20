@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "template-web-django"
+name = "boxing-gym-exper-lesson-reserve-sys"
 version = "0.1.0"
 description = ""
 authors = ["atsushimemet <noap3b69n@gmail.com>"]
