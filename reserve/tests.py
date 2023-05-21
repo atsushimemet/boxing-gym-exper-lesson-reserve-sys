@@ -89,3 +89,36 @@ class GymModelTest(TestCase):
 
         gym_hp_link_field = Gym._meta.get_field("gym_hp_link")
         self.assertEqual(gym_hp_link_field.max_length, 255)
+
+    def test_gym_addr_does_not_allow_null(self):
+        # nullを許容していないフィールドのテスト
+        gym = Gym(
+            gym_cd=2,
+            gym_nm="Example Gym",
+            gym_hp_link="http://example.com",
+            gym_addr=None,
+            gym_phone_reserve_link="http://example.com/phone",
+            gym_net_reserve_link="http://example.com/net",
+        )
+        with self.assertRaises(Exception):
+            gym.full_clean()  # cleanメソッドを呼び出し、例外が発生することを確認します
+
+    def test_gym_addr_field_type(self):
+        self.setup()
+        field = self.gym._meta.get_field("gym_addr")
+        self.assertEqual(field.get_internal_type(), "CharField")
+
+    def test_gym_addr_has_correct_max_length(self):
+        gym = Gym(
+            gym_cd=3,
+            gym_nm="A" * 101,  # 101文字の文字列を指定します
+            gym_hp_link="http://example.com",
+            gym_addr="Example Address",
+            gym_phone_reserve_link="http://example.com/phone",
+            gym_net_reserve_link="http://example.com/net",
+        )
+        with self.assertRaises(Exception):
+            gym.full_clean()  # cleanメソッドを呼び出し、例外が発生することを確認します
+
+        gym_addr_field = Gym._meta.get_field("gym_addr")
+        self.assertEqual(gym_addr_field.max_length, 100)
