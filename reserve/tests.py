@@ -142,3 +142,23 @@ class GymModelTest(TestCase):
 
         gym_phone_reserve_link_field = Gym._meta.get_field("gym_phone_reserve_link")
         self.assertEqual(gym_phone_reserve_link_field.max_length, 255)
+
+    def test_gym_net_reserve_link_field_type(self):
+        self.setup()
+        field = self.gym._meta.get_field("gym_net_reserve_link")
+        self.assertEqual(field.get_internal_type(), "CharField")
+
+    def test_gym_net_reserve_link_has_correct_max_length(self):
+        gym = Gym(
+            gym_cd=4,
+            gym_nm="Example Gym",
+            gym_hp_link="http://example.com",
+            gym_addr="Example Address",
+            gym_phone_reserve_link="http://example.com/phone",
+            gym_net_reserve_link="A" * 256,
+        )
+        with self.assertRaises(Exception):
+            gym.full_clean()  # cleanメソッドを呼び出し、例外が発生することを確認します
+
+        gym_net_reserve_link_field = Gym._meta.get_field("gym_net_reserve_link")
+        self.assertEqual(gym_net_reserve_link_field.max_length, 255)
