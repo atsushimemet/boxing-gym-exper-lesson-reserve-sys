@@ -7,6 +7,26 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <h1>Gym List</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ボクシングジム</th>
+                <th>住所</th>
+                <th>体験電話予約</th>
+                <th>体験Net予約</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for gym in gyms %}
+            <tr>
+                <td><a href="{{ gym.gym_hp_link }}">{{ gym.gym_nm }}</a></td>
+                <td>{{ gym.gym_addr }}</td>
+                <td>{% if gym.gym_phone_reserve_link %}<a href="{{ gym.gym_phone_reserve_link }}">○{% endif %}</td>
+                <td>{% if gym.gym_net_reserve_link %}<a href="{{ gym.gym_net_reserve_link }}">○{% endif %}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </body>
 </html>
