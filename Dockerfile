@@ -8,6 +8,7 @@ WORKDIR /home/ec2-user
 COPY id_rsa /root/.ssh/id_rsa
 COPY id_rsa.pub /root/.ssh/id_rsa.pub
 
+
 # SSH設定ファイルの更新
 RUN chmod 600 /root/.ssh/id_rsa
 RUN chmod 644 /root/.ssh/id_rsa.pub
@@ -21,6 +22,9 @@ RUN eval $(ssh-agent -s) && \
 RUN git clone git@github.com:atsushimemet/boxing-gym-exper-lesson-reserve-sys.git
 WORKDIR /home/ec2-user/boxing-gym-exper-lesson-reserve-sys
 
+# local_settings.pyのコピー
+COPY config/local_settings.py ./config/local_settings.py
+
 # poetryインストール
 RUN curl -sSL https://install.python-poetry.org | python3 - && \
     # シンボリックによるpathへのpoetryコマンドの追加
@@ -29,6 +33,12 @@ RUN curl -sSL https://install.python-poetry.org | python3 - && \
     # 仮想環境を作成しない設定(コンテナ前提のため，仮想環境を作らない)
     poetry config virtualenvs.create false
 
-# Djangoサーバーの起動
+# ライブラリインストール
 RUN poetry install --no-dev
+
+# Django migrate
+RUN python manage.py makemigrations
+RUN python manage.py migrate
+
+# Djangoサーバーの起動
 CMD python manage.py runserver 0.0.0.0:8000
