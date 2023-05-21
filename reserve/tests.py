@@ -21,7 +21,7 @@ class GymModelTest(TestCase):
         self.assertEqual(self.gym._meta.pk.name, "gym_cd")
 
     def test_gym_cd_is_unique(self):
-        # gym_nmが一意制約を持つことをテストします。
+        # gym_cdが一意制約を持つことをテストします。
         self.setup()
         field = self.gym._meta.get_field("gym_cd")
         self.assertTrue(field.unique)
