@@ -12,5 +12,7 @@
   - `docker container rm -f container`
 - 起動中のコンテナを確認
   - `docker ps`
+- 起動中・停止中のコンテナを確認
+  - `docker ps`
 - コンテナに入る
   - `docker exec -it container bash`
