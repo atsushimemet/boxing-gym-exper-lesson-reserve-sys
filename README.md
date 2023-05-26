@@ -20,3 +20,6 @@
   - `docker rm $(docker ps -aq)`
 - Dockerイメージを一括で削除
   - `docker image prune -a`
+
+# ALLOWED_HOSTに0.0.0.0が記載されているにもかかわらず、HTTPリクエストを実行して、Disallowedhostエラーが出る。
+djangoイメージ作成時点では、ALLOWED_HOSTに0.0.0.0が含まれていなかった
