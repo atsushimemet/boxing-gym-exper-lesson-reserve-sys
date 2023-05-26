@@ -18,3 +18,5 @@
   - `docker exec -it container bash`
 - Dockerで実行中または停止中のすべてのコンテナを一括で削除
   - `docker rm $(docker ps -aq)`
+- Dockerイメージを一括で削除
+  - `docker image prune -a`
