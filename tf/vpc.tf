@@ -69,6 +69,13 @@ resource "aws_security_group" "boxing_ec2_sg" {
     cidr_blocks = [local.allowed_cidr]
   }
 
+  ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
   ### アウトバウンドルール
   egress {
     from_port   = 0
