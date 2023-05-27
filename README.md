@@ -27,7 +27,10 @@ djangoイメージ作成時点では、ALLOWED_HOSTに0.0.0.0が含まれてい�
 # 本番環境構築メモ
 - ローカル開発環境からawsリソースを作成する。
   - `cd ~/Repository/boxing-gym-exper-lesson-reserve-sys/tf && ./terraform_deploy.sh true`
-- ipアドレスをローカル開発環境の.ssh/configのHostnameに書き込む
+- ipアドレスを下記に書き込む
+  - ローカル開発環境の.ssh/configのHostnameに書き込む
+  - ローカル開発環境のdjangoのALLOWED_HOSTに書き込む
+- リモートレポジトリを最新の状態にする
 - 秘密鍵の権限変更
   - `chmod 400 id_rsa_tf`
 - Dockerfileをローカル開発環境から本番環境にコピーする
