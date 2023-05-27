@@ -40,4 +40,9 @@ resource "aws_instance" "boxing_ec2" {
   associate_public_ip_address = "true"
   key_name                    = var.key_name
   tags                        = { Name = "upd-terraform-boxing-ec2" }
+  user_data                   = <<-EOF
+    #!/bin/bash
+    yum update -y
+    yum install -y git
+  EOF
 }
