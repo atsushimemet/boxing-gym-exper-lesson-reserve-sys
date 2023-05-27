@@ -23,3 +23,9 @@
 
 # ALLOWED_HOSTに0.0.0.0が記載されているにもかかわらず、HTTPリクエストを実行して、Disallowedhostエラーが出る。
 djangoイメージ作成時点では、ALLOWED_HOSTに0.0.0.0が含まれていなかった
+
+# 本番環境構築メモ
+- Dockerfileをローカル開発環境から本番環境にコピーする
+  - `scp ~/Repository/boxing-gym-exper-lesson-reserve-sys/Dockerfile tf-boxing-ssh:/home/ec2-user/`
+- イメージの作成
+- コンテナの作成
