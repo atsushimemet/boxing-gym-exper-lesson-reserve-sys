@@ -29,6 +29,8 @@ djangoイメージ作成時点では、ALLOWED_HOSTに0.0.0.0が含まれてい�
   - `scp ~/Repository/boxing-gym-exper-lesson-reserve-sys/Dockerfile tf-boxing-ssh:/home/ec2-user/`
 - local_settings.pyをローカル開発環境から本番環境にコピーする
   - `scp ~/Repository/boxing-gym-exper-lesson-reserve-sys/config/local_settings.py tf-boxing-ssh:/home/ec2-user/`
+- 本番環境にconfigディレクトリの作成&local_settings.pyの移動
+  - `mkdir config && mv local_settings.py config/`
 - github疎通用のsshキーの作成
   - `ssh-keygen -t rsa`
 - 公開鍵の登録
