@@ -29,5 +29,6 @@ djangoイメージ作成時点では、ALLOWED_HOSTに0.0.0.0が含まれてい�
   - `scp ~/Repository/boxing-gym-exper-lesson-reserve-sys/Dockerfile tf-boxing-ssh:/home/ec2-user/`
 - github疎通用のsshキーの作成
   - `ssh-keygen -t rsa`
+- 公開鍵の登録
 - イメージの作成
 - コンテナの作成
