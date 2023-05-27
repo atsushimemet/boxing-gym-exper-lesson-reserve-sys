@@ -36,8 +36,10 @@ djangoイメージ作成時点では、ALLOWED_HOSTに0.0.0.0が含まれてい�
   - `scp ~/Repository/boxing-gym-exper-lesson-reserve-sys/config/local_settings.py tf-boxing-ssh:/home/ec2-user/`
 - 本番環境にconfigディレクトリの作成&local_settings.pyの移動
   - `mkdir config && mv local_settings.py config/`
-- github疎通用のsshキーの作成
+- 本番環境でgithub疎通用のsshキーの作成
   - `ssh-keygen -t rsa`
+- 本番環境で公開鍵・秘密鍵を所定の位置に配置
+  - `mv ~/.ssh/id_rsa* .`
 - 公開鍵の登録
 - イメージの作成
 - コンテナの作成
