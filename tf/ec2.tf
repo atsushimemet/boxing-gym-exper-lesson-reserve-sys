@@ -40,4 +40,12 @@ resource "aws_instance" "boxing_ec2" {
   associate_public_ip_address = "true"
   key_name                    = var.key_name
   tags                        = { Name = "upd-terraform-boxing-ec2" }
+  user_data                   = <<-EOF
+    #!/bin/bash
+    yum update -y
+    yum install -y git
+    amazon-linux-extras install docker -y
+    service docker start
+    usermod -aG docker ec2-user
+  EOF
 }
