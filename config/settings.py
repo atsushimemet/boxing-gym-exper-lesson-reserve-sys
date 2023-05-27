@@ -25,7 +25,7 @@ from .local_settings import SECRET_KEY  # noqa
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1", "localhost", "0.0.0.0"]
+ALLOWED_HOSTS = ["127.0.0.1", "localhost", "0.0.0.0", "3.112.19.213]
 
 
 # Application definition
